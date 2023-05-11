@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cotización de ventana - Resultado</title>
+    <!-- Agregar los archivos de Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- Agregar los archivos de jsPDF y jsPDF-AutoTable -->
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.6/jspdf.plugin.autotable.min.js"></script>
+
+    <script>
+
+
+    function onJspdfLoad() {
+  $('#btn-imprimir-pdf').on('click', function () {
+    // Crear el objeto jsPDF
+    var doc = new jsPDF();
+    
+    // Agregar un título al PDF
+    doc.text('Cotización', 14, 20);
+
+    // Obtener los datos de la lista
+    var data = [];
+    $('ul.list-group li').each(function() {
+      var text = $(this).text();
+      var colonIndex = text.indexOf(':');
+      var key = text.substr(0, colonIndex).trim();
+      var value = text.substr(colonIndex + 1).trim();
+      data.push([key, value]);
+    });
+
+    // Agregar los datos de la lista al PDF
+    doc.autoTable({
+      
+      
+      head: [['Detalle', 'Valor']],
+      body: data
+    });
+
+    // Guardar el PDF
+    doc.save('cotizacion.pdf');
+  });
+}
+
+window.addEventListener('DOMContentLoaded', onJspdfLoad);
+
+
+
+
+    </script>
+
+  </head>
+
+  
+  <body>
+
+
+    <div class="container">
+      <div class="container">
+        <!-- Contenido de la tabla -->
+        <button id="btn-imprimir-pdf" class="btn btn-success mt-4">Imprimir en PDF</button>
+        <button id="menu-principal" class="btn btn-primary mt-4">Menú principal</button>
+
+      </div>
+      
+      <h1 class="mt-4 mb-4">Resultado de Cotización</h1>
+      <div class="row">
+        <div class="col-md-6">
+          
+          <ul class="list-group">
+           
+            <li class="list-group-item">Estilo: {{ estilo }}</li>
+            <li class="list-group-item">Acabado: {{ acabado }}</li>
+            <li class="list-group-item">Tipo de vidrio: {{ vidrio_tipo }}</li>
+            {% if esmerilado %}
+              <li class="list-group-item">Vidrio esmerilado: Sí</li>
+            {% else %}
+              <li class="list-group-item">Vidrio esmerilado: No</li>
+            {% endif %}
+            <li class="list-group-item">Cantidad: {{ cantidad }}</li>
+            <li class="list-group-item">Total Ventana: {{ total }}</li>
+            <li class="list-group-item">Total Descuento: {{ descuento }}</li>
+            <li class="list-group-item">Costo total: ${{ costo_total }}</li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <img src="../ventana.png" alt="Ventana" class="img-fluid">
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+  document.getElementById("menu-principal").addEventListener("click", function(){
+    console.log("Se hizo clic en el botón Menú principal");
+    window.location.href = "../";
+  });
+  
+      </script>
+</html>
