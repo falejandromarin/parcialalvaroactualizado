@@ -35,13 +35,33 @@
         </div>
         <div class="form-group">
           <label for="acabado">Acabado:</label>
-          <select class="form-control" id="acabado" name="acabado">
+          <select class="form-control" id="acabado" name="acabado" onchange="checkCustomInput()">
             <option value="Pulido">Pulido</option>
             <option value="Lacado Brillante">Lacado Brillante</option>
             <option value="Anodizado">Anodizado</option>
             <option value="Lacado Mate">Lacado Mate</option>
+            <option value="Otro">Otro</option>
           </select>
         </div>
+        
+        <div id="customInput" class="form-group" style="display: none;">
+          <label for="otroAcabado">Otro Acabado:</label>
+          <input type="text" class="form-control" id="otroAcabado" name="otroAcabado">
+        </div>
+        
+        <script>
+          function checkCustomInput() {
+            var select = document.getElementById("acabado");
+            var customInput = document.getElementById("customInput");
+        
+            if (select.value === "Otro") {
+              customInput.style.display = "block";
+            } else {
+              customInput.style.display = "none";
+            }
+          }
+        </script>
+        
         <div class="form-group">
           <label for="vidrio">Tipo de vidrio:</label>
           <select class="form-control" id="vidrio" name="vidrio">

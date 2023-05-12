@@ -1,0 +1,92 @@
+
+*************COTIZACIÓN VENTANAS****************
+
+Fecha: 27-03-2023
+Developer: Alvaro Valencia
+Correo: 
+
+
+Introduction:
+
+Se realiza aplicativo Web en lenguaje Python utilizando como framework principal le libreria Flask y seguir como patron MVC.
+
+
+
+-Requermientos minimos sugeridos 
+
+1.	El programa debe pedir el tipo de acabado del aluminio
+2.	El programa debe pedir el tipo de vidrio y si es esmerilado o no
+3.	El programa debe pedir las dimensiones de la ventana
+4.	El programa debe pedir la cantidad de ventanas a fabricar
+5.	El programa debe calcular la cantidad de aluminio, la cantidad de vidrio requerido para fabricar la ventana
+6.	El programa de calcular el costo del vidrio, el costo del aluminio, el costo de las el costo de las esquinas 
+y el costo de las chapas según la cantidad
+7.	El programa debe calcular el costo de fabricación de la ventana 
+8.	El programa debe mostrar la cotización con los costos de fabricación  de la ventana
+
+
+
+
+Requerimientos minimos para desplegar el proyecto de manera local: 
+
+-Se debe tener instalado Python 3 
+-Se debe contar con un IDE
+-En lo posible se debe crear un entorno virtual para evitar conflitos con otros proyectos python.
+-Se debe installar flask ($ pip install flask) utilizando el programa de gestión de paquetes.
+
+
+Estructura del proyecto.
+
+**Vistas**
+
+templates--
+          |formulario.html
+          |resultados.html
+
+**Nota:** *El archivo formulario.html es la vista principal hacia el usuario donde se realiza la cotización*
+*y en la vista resultado.html se refleja la tabla con el resultado de la cotización.*
+
+
+Directorio_Raiz---
+                   |PruebaPython.py
+
+**Nota:** *El archivo PruebaPython.py se encarga de toda la logíca de negocio, dentro del archivo esta comentado cada uno de los calculos necesarios para el resultado final*
+
+
+
+**Pasos para realizar los pytest**
+
+
+Es necesario tener installado pytest en nuestro entorno (pip install pytest)
+
+Directorio_Raiz---
+                   |test_my_tests.py
+
+*Para realizar los test correspondientes se debe ejecutar en la terminal el siguiente comando*
+
+//---------------------EJEMPLO TEST APROBADO-------------------------------------------
+
+PS C:\xampp\htdocs\ParcialAlvaroValencia> py.test  
+============================================================== test session starts ===============================================================
+platform win32 -- Python 3.10.11, pytest-7.3.1, pluggy-1.0.0
+rootdir: C:\xampp\htdocs\ParcialAlvaroValencia
+collected 2 items
+
+test_my_tests.py ..                                                                                                                         [100%]
+
+=============================================================== 2 passed in 1.20s ================================================================ 
+
+
+En el caso anterior se establecieron dos test a los cuales se le paso unos parametros esperando retornar la respuesta correspondiente aplicada en la logica de PruebaPython.py y se ejecutaron de manera correcta, si se ingresa un valor erroneo la respuesta se altera y el test falla. 
+
+
+//-----------------------EJEMPLO TEST FALLIDO-----------------------------------------
+st_my_tests.py:23: AssertionError
+============================================================ short test summary info ============================================================= 
+FAILED test_my_tests.py::TestCotizacion::test_cotizacion_sin_esmerilado - assert b'49541.0' in b'<!DOCTYPE html>\n<html>\n  <head>\n    <title>Cotizaci\xc3\xb3n de ventana - Resultado</title>\n    <!-- Agregar los......
+========================================================== 1 failed, 1 passed in 0.32s =========================================================== 
+PS C:\xampp\htdocs\ParcialAlvaroValencia> 
+
+
+
+

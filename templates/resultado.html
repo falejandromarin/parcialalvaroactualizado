@@ -76,6 +76,7 @@ window.addEventListener('DOMContentLoaded', onJspdfLoad);
            
             <li class="list-group-item">Estilo: {{ estilo }}</li>
             <li class="list-group-item">Acabado: {{ acabado }}</li>
+            <li class="list-group-item">Descripción Acabado: {{ otroacabado }}</li>
             <li class="list-group-item">Tipo de vidrio: {{ vidrio_tipo }}</li>
             {% if esmerilado %}
               <li class="list-group-item">Vidrio esmerilado: Sí</li>
@@ -83,9 +84,9 @@ window.addEventListener('DOMContentLoaded', onJspdfLoad);
               <li class="list-group-item">Vidrio esmerilado: No</li>
             {% endif %}
             <li class="list-group-item">Cantidad: {{ cantidad }}</li>
-            <li class="list-group-item">Total Ventana: {{ total }}</li>
-            <li class="list-group-item">Total Descuento: {{ descuento }}</li>
-            <li class="list-group-item">Costo total: ${{ costo_total }}</li>
+            <li class="list-group-item">Total Ventana: ${{ total }}</li>
+            <li class="list-group-item">Total Descuento: ${{ descuento }}</li>
+            <li class="list-group-item">Costo Total: ${{ costo_total }}</li>
           </ul>
         </div>
         <div class="col-md-6">
